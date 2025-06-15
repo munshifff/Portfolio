@@ -575,7 +575,6 @@
         .theme-switcher {
             display: flex;
             align-items: center;
-            margin-left: 2rem;
         }
         
         .theme-toggle {
@@ -610,15 +609,7 @@
             opacity: 0;
         }
         
-        .theme-toggle-ball {
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            background-color: var(--light);
-            border-radius: 50%;
-            left: 5px;
-            transition: all 0.3s ease;
-        }
+        
         
         .theme-toggle:checked + .theme-toggle-label .theme-toggle-ball {
             transform: translateX(30px);
@@ -923,7 +914,7 @@
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 1001;
-    padding: 10px;
+    padding: 0.75px;
 }
 
 @media (max-width: 768px) {
@@ -941,6 +932,8 @@
         padding: 20px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         display: none; /* Start hidden */
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
     
     .nav-links.active {
@@ -953,18 +946,13 @@
         align-items: center;
         gap: 15px;
         padding: 15px;
-        font-size: 1.2rem;
         color: var(--primary);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        
     }
-    
-    body.dark-theme .nav-links {
-        background: var(--dark);
-    }
+   
     
     body.dark-theme .nav-links a {
         color: var(--light);
-        border-color: rgba(255,255,255,0.1);
     }
     
 }
@@ -972,4 +960,17 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+body.dark-theme .nav-links a {
+    color: var(--primary); 
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* If you want to change the hover color as well */
+body.dark-theme .nav-links a:hover {
+    color: var(--accent); 
 }
