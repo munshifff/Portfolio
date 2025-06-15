@@ -55,41 +55,33 @@
 
         
 
-        // Mobile Menu Toggle
-document.querySelector('.menu-toggle').addEventListener('click', function() {
-    const navLinks = document.querySelector('.nav-links');
+
+
+
+       // Mobile menu functionality
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', function() {
+    // Toggle the menu visibility
     navLinks.classList.toggle('active');
     
+    // Change the icon
     const icon = this.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
+    if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
 });
 
-// Smooth scrolling for all navigation links
-document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-        
-        // Close mobile menu after clicking a link
-        const navLinks = document.querySelector('.nav-links');
-        if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            const menuIcon = document.querySelector('.menu-toggle i');
-            menuIcon.classList.remove('fa-times');
-            menuIcon.classList.add('fa-bars');
-        }
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+        document.querySelector('.menu-toggle i').classList.remove('fa-times');
+        document.querySelector('.menu-toggle i').classList.add('fa-bars');
     });
 });
-
-        
-        
-
-        
